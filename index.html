@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#6d1835">
+  <title>Charis turns 18 | Birthday sleepover</title>
+  <style>
+    :root {
+      --site-primary: #6D1835;
+      --site-on-primary: #FFF7F8;
+      --site-secondary: #F4C8D5;
+      --site-on-secondary: #4A1729;
+      --site-background: #FFF7F8;
+      --site-on-background: #401B29;
+      --site-font-body: "Trebuchet MS", Arial, sans-serif;
+      --site-font-heading: Georgia, "Times New Roman", serif;
+      --site-heading-scale: 1;
+      --site-spacing-scale: 1;
+      --site-radius-scale: 1;
+      --site-decoration-opacity: 1;
+      color-scheme: light dark;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--site-font-body);
+      background: light-dark(#fff7f8, #21151a);
+      color: light-dark(#401b29, #fff0f4);
+    }
+    .app {
+      min-height: 100vh;
+      width: 100%;
+      border-radius: 0;
+      overflow: hidden;
+      background-color: var(--site-background);
+      color: var(--site-on-background);
+    }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: calc(18px * var(--site-spacing-scale)) clamp(20px, 6vw, 76px);
+      background: var(--site-primary);
+      color: var(--site-on-primary);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-size: 11px;
+    }
+      .rsvp {
+          text-align: center;
+          padding: 50px 20px;
+          background: #f8e9e9;
+      }
+
+      .rsvp iframe {
+              max-width: 640px;
+              border: none;
+              border-radius: 15px;
+          }
+    .topbar a { color: inherit; text-decoration: none; }
+    .hero {
+      position: relative;
+      isolation: isolate;
+      padding: clamp(64px, 11vw, 124px) 22px clamp(68px, 10vw, 112px);
+      text-align: center;
+      background: var(--site-secondary);
+      color: var(--site-on-secondary);
+      overflow: hidden;
+    }
+    .hero::before, .hero::after {
+      content: "✦";
+      position: absolute;
+      z-index: -1;
+      color: var(--site-primary);
+      opacity: calc(.16 * var(--site-decoration-opacity));
+      font-size: clamp(90px, 17vw, 190px);
+      line-height: 1;
+    }
+    .hero::before { left: 4%; top: 13%; transform: rotate(-14deg); }
+    .hero::after { right: 5%; bottom: 8%; transform: rotate(18deg); }
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: .28em;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    h1, h2, h3 { font-family: var(--site-font-heading); font-weight: 400; }
+    h1 {
+      margin: 20px 0 10px;
+      font-size: clamp(62px, 12vw, 132px);
+      line-height: .92;
+      letter-spacing: -.055em;
+      color: var(--site-primary);
+    }
+    .eighteen {
+      display: inline-block;
+      margin: 16px 0 22px;
+      padding: 9px 20px;
+      border: 1px solid currentColor;
+      border-radius: 999px;
+      font-family: var(--site-font-heading);
+      font-style: italic;
+      font-size: 18px;
+    }
+    .hero-copy { max-width: 490px; margin: 0 auto; font-size: 15px; line-height: 1.8; }
+    .countdown { display: flex; justify-content: center; gap: 12px; margin: 30px auto 0; }
+    .countdown-item { min-width: 72px; padding: 13px 10px; border: 1px solid rgba(109,24,53,.35); border-radius: 14px; background: rgba(255,255,255,.28); }
+    .countdown-number { display: block; color: var(--site-primary); font: 32px var(--site-font-heading); line-height: 1.1; }
+    .countdown-label { display: block; margin-top: 5px; font-size: 9px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .countdown-ended { margin: 26px 0 0; font-size: 14px; font-weight: 700; }
+    .hero-button, .submit-button {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 15px 25px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--site-primary);
+      color: var(--site-on-primary);
+      text-decoration: none;
+      font: 700 11px var(--site-font-body);
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform .2s ease, opacity .2s ease;
+    }
+    .hero-button:hover, .submit-button:hover { transform: translateY(-2px); opacity: .9; }
+    .section { padding: clamp(54px, 8vw, 88px) clamp(22px, 7vw, 90px); }
+    .section-heading { text-align: center; margin: 0 auto 36px; max-width: 600px; }
+    .section-heading h2 { color: var(--site-primary); font-size: clamp(34px, 5vw, 52px); margin: 10px 0; }
+    .section-heading p { line-height: 1.75; font-size: 14px; }
+    .details { background: light-dark(#fff, #2a1c22); }
+    .detail-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; max-width: 930px; margin: auto; }
+    .detail-card {
+      padding: 28px 18px;
+      text-align: center;
+      border: 1px solid light-dark(#efd7df, #65404e);
+      border-radius: calc(18px * var(--site-radius-scale));
+      background: light-dark(#fff9fa, #34232a);
+    }
+    .detail-icon { font-size: 23px; }
+    .detail-card h3 { color: var(--site-primary); font-size: 25px; margin: 13px 0 8px; }
+    .detail-card p { font-size: 13px; line-height: 1.7; margin: 0; overflow-wrap: anywhere; }
+    .placeholder { font-weight: 700; color: light-dark(#9c3157, #f2a9c1); }
+    .dress { background: var(--site-primary); color: var(--site-on-primary); }
+    .dress .section-heading h2 { color: var(--site-secondary); }
+    .dress .section-heading p { color: #f8e8ed; }
+    .dress-swatches { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; margin: 30px 0; }
+    .swatch { width: 125px; text-align: center; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; }
+    .swatch-color { height: 105px; border-radius: 16px; margin-bottom: 12px; border: 2px solid rgba(255,255,255,.5); }
+    .swatch-color.burgundy { background: #6d1835; }
+    .swatch-color.pink { background: #f4c8d5; }
+    .dress-note { max-width: 570px; margin: auto; text-align: center; line-height: 1.8; font-size: 14px; color: #f8e8ed; }
+    .gift { background: var(--site-secondary); color: var(--site-on-secondary); text-align: center; }
+    .gift-icon { font-size: 56px; display: block; margin-bottom: 14px; }
+    .gift h2 { color: var(--site-primary); font-size: clamp(34px, 5vw, 48px); margin: 0 0 12px; }
+    .gift p { max-width: 530px; margin: auto; line-height: 1.8; font-size: 14px; }
+    .rsvp { background: light-dark(#fff7f8, #21151a); }
+    .form-wrap { max-width: 700px; margin: auto; padding: clamp(22px, 5vw, 42px); border: 1px solid light-dark(#efd7df, #65404e); border-radius: calc(22px * var(--site-radius-scale)); background: light-dark(#fff, #2a1c22); box-shadow: 0 18px 50px rgba(74,23,41,.07); }
+    .form-intro { text-align: center; margin-bottom: 28px; }
+    .form-intro h2 { color: var(--site-primary); font-size: 38px; margin: 8px 0; }
+    .form-intro p { font-size: 13px; line-height: 1.7; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .field { display: flex; flex-direction: column; gap: 8px; }
+    .field.full { grid-column: 1 / -1; }
+    label, legend { font-size: 12px; font-weight: 700; letter-spacing: .04em; }
+    input, select, textarea {
+      width: 100%;
+      min-height: 46px;
+      padding: 12px 13px;
+      border: 1px solid light-dark(#dfc3cd, #775463);
+      border-radius: calc(10px * var(--site-radius-scale));
+      background: light-dark(#fffafb, #21151a);
+      color: light-dark(#401b29, #fff0f4);
+      font: 14px var(--site-font-body);
+    }
+    textarea { min-height: 86px; resize: vertical; }
+    input:focus, select:focus, textarea:focus { outline: 3px solid rgba(244,200,213,.8); outline-offset: 2px; }
+    fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+    .choice-row { display: flex; flex-wrap: wrap; gap: 10px; }
+    .choice {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 13px;
+      border: 1px solid light-dark(#dfc3cd, #775463);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 400;
+      cursor: pointer;
+    }
+    .choice input { width: 15px; min-height: 15px; margin: 0; accent-color: var(--site-primary); }
+    .hint { font-size: 11px; line-height: 1.5; opacity: .75; }
+    .submit-row { text-align: center; }
+    .submit-button { margin-top: 24px; min-width: 190px; }
+    .response { display: none; margin-top: 18px; padding: 15px; border-radius: 12px; background: light-dark(#fbe5ec, #4b2635); text-align: center; font-size: 13px; line-height: 1.6; }
+    .response.show { display: block; }
+    .form-disclaimer { text-align: center; margin: 18px 0 0; font-size: 11px; line-height: 1.6; opacity: .7; }
+    footer { padding: 30px 20px; background: var(--site-primary); color: var(--site-on-primary); text-align: center; font-size: 11px; letter-spacing: .12em; }
+    footer span { color: var(--site-secondary); }
+    @media (max-width: 650px) {
+      .topbar { padding: 15px 18px; font-size: 9px; }
+      .detail-grid { grid-template-columns: 1fr; max-width: 390px; }
+      .detail-card { padding: 22px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .field.full { grid-column: auto; }
+      .hero-copy { font-size: 14px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <main class="app" id="top">
+    <nav class="topbar" aria-label="Main navigation">
+      <a href="#top">Charis turns 18</a>
+      <a href="#rsvp">RSVP&nbsp; ↗</a>
+    </nav>
+
+    <header class="hero">
+      <div class="eyebrow">A birthday celebration</div>
+      <h1>Charis</h1>
+      <div class="eighteen">Chapter 18</div>
+      <p class="hero-copy">One birthday. One night. A whole lot of memories to make. You're invited to celebrate Charis turning 18!</p>
+      <div class="countdown" id="countdown" role="timer" aria-label="Countdown to Charis's birthday celebration">
+        <div class="countdown-item"><span class="countdown-number" id="countdownDays">--</span><span class="countdown-label">Days</span></div>
+        <div class="countdown-item"><span class="countdown-number" id="countdownHours">--</span><span class="countdown-label">Hours</span></div>
+        <div class="countdown-item"><span class="countdown-number" id="countdownMinutes">--</span><span class="countdown-label">Minutes</span></div>
+        <div class="countdown-item"><span class="countdown-number" id="countdownSeconds">--</span><span class="countdown-label">Seconds</span></div>
+      </div>
+      <a class="hero-button" href="#rsvp">Count me in</a>
+    </header>
+
+    <section class="section details" id="details">
+      <div class="section-heading">
+        <div class="eyebrow">The important bits</div>
+        <h2>Save the date</h2>
+        <p>Get ready for a lovely evening of food, games, pictures and birthday fun.</p>
+      </div>
+      <div class="detail-grid">
+        <article class="detail-card">
+          <div class="detail-icon" aria-hidden="true">♡</div>
+          <h3>When</h3>
+          <p><span class="placeholder">Saturday, 9 January 2027</span><br><span class="placeholder">4:00 p.m.</span></p>
+        </article>
+        <article class="detail-card">
+          <div class="detail-icon" aria-hidden="true">⌖</div>
+          <h3>Where</h3>
+          <p><span class="placeholder">Saltburn by the sea</span><br><span class="placeholder">Exact address to be announced</span></p>
+        </article>
+        <article class="detail-card">
+          <div class="detail-icon" aria-hidden="true">☾</div>
+          <h3>The plan</h3>
+          <p>A birthday sleepover<br><span class="placeholder">Party ends 7pm</span></p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section dress" id="dress-code">
+      <div class="section-heading">
+        <div class="eyebrow">A little colour moment</div>
+        <h2>Dress to impress</h2>
+        <p>The dress code is burgundy &amp; baby pink.</p>
+      </div>
+      <div class="dress-swatches" aria-label="Dress code colours">
+        <div class="swatch"><div class="swatch-color burgundy"></div>Burgundy</div>
+        <div class="swatch"><div class="swatch-color pink"></div>Baby pink</div>
+      </div>
+      <p class="dress-note">Wear an outfit in either colour or mix them together. Make it your own, feel comfortable and come ready for pictures!</p>
+    </section>
+
+    <section class="section gift">
+      <span class="gift-icon" aria-hidden="true">🎀</span>
+      <div class="eyebrow">A little something</div>
+      <h2>There's a gift box with your name on it</h2>
+      <p>I'm putting together a little birthday-survival treat box for everyone. Fill in the form below so I can get the details right and make yours feel personal.</p>
+    </section>
+
+    <section class="section rsvp" id="rsvp">
+      <div class="form-wrap">
+        <div class="form-intro">
+          <div class="eyebrow">Let me know</div>
+          <h2>Are you coming?</h2>
+          <p>Reply below and add your preferences for the sleepover gift box.</p>
+        </div>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf73sKaihRsxhhdaLT0jG6Tw0DYRQsZPmqEFIyNSrfe9Xy-hg/viewform?embedded=true" width="640" height="1545" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+
+      </div>
+    </section>
+
+    <footer>MADE WITH <span>♡</span> FOR CHARIS · CHAPTER 18</footer>
+  </main>
+  <script>
+    const countdownTarget = new Date(2027, 0, 9, 16, 0, 0).getTime();
+    const countdown = document.getElementById('countdown');
+    const updateCountdown = () => {
+      const remaining = countdownTarget - Date.now();
+      if (remaining <= 0) {
+        countdown.innerHTML = '<p class="countdown-ended">The celebration is here! ♡</p>';
+        return;
+      }
+      document.getElementById('countdownDays').textContent = Math.floor(remaining / 86400000);
+      document.getElementById('countdownHours').textContent = Math.floor((remaining % 86400000) / 3600000);
+      document.getElementById('countdownMinutes').textContent = Math.floor((remaining % 3600000) / 60000);
+      document.getElementById('countdownSeconds').textContent = Math.floor((remaining % 60000) / 1000);
+    };
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    const form = document.getElementById('rsvpForm');
+    const response = document.getElementById('response');
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+      const data = new FormData(form);
+      const name = String(data.get('guestName') || '').trim();
+      const attendance = data.get('attendance');
+      response.textContent = attendance === "Yes, I'll be there!"
+        ? `Thank you, ${name}! Your RSVP is ready. Charis can't wait to celebrate with you. ♡`
+        : `Thank you for letting us know, ${name}. You'll be missed! ♡`;
+      response.classList.add('show');
+      response.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  </script>
+</body>
+</html>
